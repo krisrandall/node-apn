@@ -5,10 +5,10 @@ const credentials = require("./lib/credentials")({
 });
 
 const config = require("./lib/config")({
-  logger: debug,
+  logger:             debug,
   prepareCertificate: credentials.certificate,
-  prepareToken: credentials.token,
-  prepareCA: credentials.ca,
+  prepareToken:       credentials.token,
+  prepareCA:          credentials.ca,
 });
 
 const tls = require("tls");
@@ -25,21 +25,21 @@ const protocol = {
 };
 
 const Endpoint = require("./lib/protocol/endpoint")({
-  tls,
-  protocol,
+  tls:      tls,
+  protocol: protocol,
 });
 
 const EndpointManager = require("./lib/protocol/endpointManager")({
-  Endpoint,
+  Endpoint: Endpoint,
 });
 
 const Client = require("./lib/client")({
-  config,
-  EndpointManager,
+  config:           config,
+  EndpointManager:  EndpointManager,
 });
 
 const Provider = require("./lib/provider")({
-  Client,
+  Client: Client,
 });
 
 const Notification = require("./lib/notification");
@@ -47,7 +47,7 @@ const Notification = require("./lib/notification");
 const token = require("./lib/token");
 
 module.exports = {
-  Provider,
-  Notification,
-  token,
+  Provider:     Provider,
+  Notification: Notification,
+  token:        token,
 };
